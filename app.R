@@ -176,7 +176,6 @@ customers_data$Poisson_Probability <-
         )
         ,
       
-        # ================= POOJA =================
         tabItem(
           tabName = "Retention",
           fluidRow(
@@ -246,7 +245,6 @@ customers_data$Poisson_Probability <-
           )
         ),
         
-      # ================= JIGISHA =================
       tabItem(
         tabName = "consumer",
         # Injecting CSS specifically for the stats output
@@ -287,7 +285,7 @@ customers_data$Poisson_Probability <-
           )
         )
       ),
-      # ================= SAEE =================
+        
       tabItem(
         tabName = "purchase",
         
@@ -338,8 +336,7 @@ customers_data$Poisson_Probability <-
           )
         )
       ),
-      
-      # ================= AISHWARYA =================
+
       tabItem(
        
           tabName = "segment",
@@ -403,8 +400,7 @@ customers_data$Poisson_Probability <-
         )
       )
       ,
-      # ================= SAKSHI =================
-      # ================= SAKSHI =================
+
       tabItem(
         tabName = "decision",
         
@@ -592,8 +588,6 @@ server <- function(input, output) {
       )
   })
   
-  # ---- POOJA (Retention) SERVER ----
-  
   output$plot_retention <- renderPlotly({
     plot_ly(
       customers_data,
@@ -645,13 +639,7 @@ server <- function(input, output) {
         paper_bgcolor = "white"
       )
   })
-  
-  
-  
-  # =========================
-  # MANJIRI – SALES ANALYSIS
-  # =========================
-  
+
   price_range <- customers_data$Avg_Purchases
   sales_range <- customers_data$Sales_Amount
   
@@ -769,9 +757,6 @@ server <- function(input, output) {
     )
   })
   
-  # ---- JIGISHA (Consumer Behavior) ----
-  
-
   output$purchase_stats <- renderText({
     x <- customers_data$Avg_Purchases
     paste0("--- Central Tendency Measures ---",
@@ -800,8 +785,7 @@ server <- function(input, output) {
     axis(2, lwd = 3, col = "black")
     box(lwd = 3, col = "black")
   })
-  # ---- SAEE (Purchase Influence) SERVER ----
-  
+
   output$discount_sales_plot <- renderPlot({
     # cex.lab=1.5 and cex.axis=1.3 for high visibility
     par(mar = c(5, 6, 4, 2), font.lab = 2, font.axis = 2, cex.lab = 1.5, cex.axis = 1.3)
@@ -845,7 +829,7 @@ server <- function(input, output) {
     axis(2, lwd = 3, col = "black")
     box(lwd = 3, col = "black")
   })
-  # ---- AISHWARYA ----
+
   output$segmentation_table <- renderTable({
     
     g <- cut(
@@ -905,10 +889,6 @@ server <- function(input, output) {
         plot.margin = margin(20, 20, 20, 20)
       )
   })
-  
-  
-  
-  # ---- SAKSHI (Decision Analysis) ----
   
   customers_data$Research_Time_num <- as.numeric(
     factor(customers_data$Research_Time,
